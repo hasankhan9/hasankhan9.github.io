@@ -3,69 +3,90 @@
 <head>
   <title>My Portfolio</title>
   <style>
-    body {
-      font-family: "Arial", sans-serif;
+    /* CSS Styles */
+    /* Reset Styles */
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
+      box-sizing: border-box;
     }
 
+    /* Global Styles */
+    body {
+      font-family:  'Calibri';
+      background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Wrapper Styles */
+    .wrapper {
+      padding: 20px;
+    }
+
+    /* Header Styles */
     header {
-      background-color: #333;
-      color: #fff;
-      padding: 40px;
+      position: relative;
+      height: 50vh;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background-color: rgba(0, 0, 0, 0.7); */
+      background-color: rgba(122, 105, 105, 0.7);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
       text-align: center;
+      color: #fff;
+      padding: 10px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 48px;
-      letter-spacing: 2px;
-    }
-
-    section {
-      padding: 40px;
-      background-color: #fff;
-      margin-bottom: 40px;
-      border-radius: 4px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 36px;
-      color: #333;
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 20px;
     }
 
-    p {
-      color: #555;
-      line-height: 1.8;
+    .contact-info {
       font-size: 18px;
+      margin-bottom: 20px;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    /* Section Styles */
+    .section {
+      padding: 60px 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 5px;
+      border-radius: 5px;
     }
 
-    li {
-      margin-bottom: 12px;
-      font-size: 18px;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    li:last-child {
-      margin-bottom: 0;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 24px;
+    .section-title {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 36px;
       color: #333;
-      margin-bottom: 8px;
     }
 
+    .fade-in {
+      opacity: 0;
+    }
+
+    /* Footer Styles */
     footer {
       background-color: #333;
       color: #fff;
@@ -77,55 +98,132 @@
     footer p {
       margin: 0;
     }
+
+    /* Animation Styles */
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInAnimation 1s forwards;
+    }
+
+    .fade-in.delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .fade-in.delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .fade-in.delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    .fade-in.delay-4 {
+      animation-delay: 0.8s;
+    }
   </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".fade-in").each(function(index) {
+        $(this).delay(index * 200).queue(function() {
+          $(this).addClass("fade-in");
+          $(this).dequeue();
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-  <header>
-    <h1>Hasan Khan</h1>
-  </header>
-  
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am an AI Engineer with 4 years of experience specializing in NLP, LLM, and deep learning computer vision. I have a passion for leveraging cutting-edge technologies to solve complex problems and create innovative solutions.
-    </p>
-  </section>
-  
-  <section id="experience">
-    <h2>Experience</h2>
-    <ul>
-      <li>
-        <h3>AI Engineer - Kwantx Company</h3>
-        <p>Duration: 2012 - 2023</p>
-        <p>
-          At Kwantx Company, I worked on developing state-of-the-art NLP models to extract insights from large textual datasets. I also contributed to the implementation of deep learning algorithms for computer vision applications, achieving significant improvements in object recognition accuracy.
+  <div class="wrapper">
+    <header>
+      <div class="overlay"></div>
+      <div class="header-content">
+        <img class="profile-image fade-in" src="pic.jpg" alt="Profile Picture">
+        <h1 class="fade-in">Hasan Khan</h1>
+        <h3 class="fade-in">AI Engineer | Software Engineer | Data Scientist  </h3>
+        <p class="contact-info fade-in">Email: m.hasankha@gmail.com</p>
+      </div>
+    </header>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <p class="fade-in">
+          I am an AI Engineer with 4 years of experience specializing in NLP, LLM, and deep learning computer vision. I have a passion for leveraging cutting-edge technologies to solve complex problems and create innovative solutions.
         </p>
-      </li>
-      <li>
-        <h3>Data Scientist - Level3 B.O.S Corporation</h3>
-        <p>Duration: 2017 - 2022</p>
-        <p>
-          As a Data Scientist at Level3 B.O.S Corporation, I focused on natural language processing tasks and built models to analyze customer feedback sentiment and extract key insights. I also collaborated with cross-functional teams to develop machine learning solutions for various business needs.
-        </p>
-      </li>
-    </ul>
-  </section>
-  
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Natural Language Processing (NLP)</li>
-      <li>Deep Learning</li>
-      <li>Computer Vision</li>
-      <li>Machine Learning</li>
-      <li>Python</li>
-      <li>TensorFlow</li>
-      <li>PyTorch</li>
-    </ul>
-  </section>
-  
-  <footer>
-    <p>&copy; 2023 My Portfolio. All rights reserved.</p>
-  </footer>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Experience</h2>
+        <ul class="fade-in">
+          <li>
+            <h3>AI Engineer - Kwantx Company</h3>
+            <h5><i>California, USA</i></h5>
+            <p><b>Duration</b>: 2019 - Present</p>
+            <p>
+              At Kwantx Company, I worked on developing state-of-the-art NLP models to extract insights from large textual datasets. I also contributed to the implementation of deep learning algorithms for computer vision applications, achieving significant improvements in object recognition accuracy.
+            </p>
+            <p>
+              In addition, I utilized my expertise in machine learning techniques to predict stock prices and build an alpha model from scratch. By leveraging transformers and deep learning architectures, I successfully developed a model that demonstrated impressive accuracy in forecasting stock movements and generating profitable trading signals.
+            </p>
+          </li>
+          <br>
+          <li>
+            <h3>Data Scientist - Level3 B.O.S</h3>
+            <h5><i>Karachi, Pakistan</i></h5>
+            <p><b>Duration</b>: 2017 - 2019</p>
+            <p>
+              As a Data Scientist at Level3 B.O.S, I focused on natural language processing tasks and built models to analyze customer feedback sentiment and extract key insights. I also collaborated with cross-functional teams to develop machine learning solutions for various business needs.
+            </p>
+            <p>
+              During my tenure, I developed a deep interest in applying machine learning to financial markets. I conducted extensive research on stock price prediction and successfully implemented cutting-edge techniques to build models that captured market trends and generated accurate predictions. This experience deepened my understanding of finance and the application of AI in the investment domain.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="education fade-in">
+          <h3>Bachelor of Software Engineering</h3>
+          <p>Ilma University</p>
+          <p>GPA: 3.3</p>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title fade-in">Skills</h2>
+        <ul class="fade-in">
+          <li>Natural Language Processing (NLP)</li>
+          <li>Deep Learning</li>
+          <li>Computer Vision</li>
+          <li>Machine Learning</li>
+          <li>Python</li>
+          <li>TensorFlow</li>
+          <li>PyTorch</li>
+        </ul>
+      </div>
+    </section>
+
+
+    <footer>
+      <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 </html>
